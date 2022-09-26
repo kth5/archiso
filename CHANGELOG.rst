@@ -14,6 +14,136 @@ Changed
 Removed
 -------
 
+[67] - 2022-09-25
+=================
+
+Added
+-----
+
+- The ability to generate rootfs signatures using openssl CMS module if ``-c`` is given.
+
+Changed
+-------
+
+- Order ``pacman-init.service`` before ``archlinux-keyring-wkd-sync.service`` since
+  ``archlinux-keyring-wkd-sync.service`` needs an initialized pacman keyring.
+- Order ``pacman-init.service`` after ``time-sync.target`` since ``pacman-init.service`` may otherwise create local
+  signatures that are not valid on target systems after installation.
+
+[66] - 2022-08-28
+=================
+
+Added
+-----
+
+- Add ``efibootimg`` to ``mkarchiso`` to abstract the FAT image path.
+- Unset ``LANGUAGE`` since ``LC_ALL=C.UTF-8``, unlike ``LC_ALL=C``, does not override ``LANGUAGE``.
+- Copy all files from the ``grub`` directory to ISO9660 and the FAT image, not just only ``grub.cfg``.
+- Touching ``/usr/lib/clock-epoch`` to to help ``systemd`` with screwed or broken RTC.
+
+Changed
+-------
+
+- Disable GRUB's shim_lock verifier and preload more modules. This allows reusing the GRUB EFI binaries when repacking
+  the ISO to support Secure Boot with custom signatures.
+
+[65] - 2022-06-30
+=================
+
+Added
+-----
+
+- Configure the locale for the baseline profile to ``C.UTF-8`` so that a UTF-8 locale is used.
+- Add ``uefi-x64.grub.esp`` and ``uefi-x64.grub.eltorito`` boot mode to support x86_64 UEFI boot on x86_64 machines.
+- Use ``mkfs.erofs``'s ``ztailpacking`` option in the baseline profile to reduce the image size.
+
+Changed
+-------
+
+- Change the releng profile's locale from ``en_US.UTF-8`` to ``C.UTF-8``.
+- Set ``LC_ALL`` to ``C.UTF-8`` instead of ``C`` in mkarchiso since it is now available and non-UTF-8 locales should be
+  avoided.
+
+Removed
+-------
+
+- Remove the custom pacman hook that ran ``locale-gen`` on glibc install from the releng profile. The used locale now
+  ships with the glibc package itself.
+
+[64] - 2022-05-30
+=================
+
+Added
+-----
+
+- Add ``uefi-ia32.grub.esp`` boot mode to support IA32 UEFI boot on x86_64 machines.
+- Add GRUB configuration files to profiles.
+- Add accessible ``copytoram`` entry.
+- Enable beeps in systemd-boot menu.
+
+Changed
+-------
+
+- Fix systemd-boot menu entry sorting by using the ``sort-key`` option.
+
+[63] - 2022-04-30
+=================
+
+Added
+-----
+
+- Add dmidecode to the list of packages in the releng profile.
+- Add open-iscsi to the list of packages in the releng profile to allow installing Arch on an iSCSI target.
+- Add open-vm-tools and hyperv to the list of packages and enable their services to provide better integration with the
+  VMware and Hyper-V hypervisors.
+
+Changed
+-------
+
+- Mount /etc/pacman.d/gnupg on ramfs instead of tmpfs to ensure its contents never land in swap.
+- Configure reflector to return only mirrors that support both IPv4 and IPv6.
+
+
+[62.1] - 2022-04-05
+===================
+
+Removed
+-------
+
+- Easter egg
+
+[62] - 2022-03-31
+=================
+
+Changed
+-------
+
+- Fix the PXE support. PXELINUX was having trouble finding the kernel and initrds. Now, archiso forces syslinux to
+  interpret all TFTP paths as absolute. That seems to have solved the issue.
+- Disable systemd-gpt-auto-generator, which we do not need, in both baseline and releng profiles. It avoids the error
+  message about it failing during boot.
+
+[61] - 2022-01-31
+=================
+
+Added
+-----
+
+- Add linux-firmware-marvell to the list of packages in the releng profile (e.g. for Surface Pro 6 WiFi support)
+- Add documentation to systemd-networkd configuration files
+- Add information about the use of changelog and merge requests to the contributing guidelines
+- Make the CI pipelines more efficient by automatically cancelling running pipelines if they are superseded by a newer
+  commit and by only running build pipelines on code or profile changes
+
+Changed
+-------
+
+- Fix an issue where mkarchiso is failing to raise an error when the ``mmd`` and ``mcopy`` commands are not found
+- Fix an issue where the architecture detection in mkarchiso fails due to an unset ``arch`` variable in the profile
+
+Removed
+-------
+
 [60] - 2021-12-28
 =================
 
