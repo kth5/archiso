@@ -496,15 +496,24 @@ _make_bootmode_bios.syslinux.eltorito() {
 _make_bootmode_openpower.grub() {
     _msg_info "Setting up Grub for OpenPOWER booting..."
     install -d -m 0755 -- "${isofs_dir}/boot/grub"
-    install -m 0644 -- "${pacstrap_dir}/boot/grub/grub.cfg" "${isofs_dir}/boot/grub/"
+    install -m 0644 -- "${profile}/grub/grub.cfg" "${isofs_dir}/boot/grub/"
     sed "s@archisolabel=ARCH_[[:digit:]]\{6\}@archisolabel=${iso_label}@g" -i ${isofs_dir}/boot/grub/grub.cfg
-
-    #rm -v ${isofs_dir}/arch/boot/ppc64le/initramfs-*-fallback.img
 
     # we need our kernels on the ISO as well
     _make_boot_on_iso9660
 
     _msg_info "Done! Grub set up for OpenPOWER booting successfully."
+}
+
+_make_bootmode_pmac.yaboot() {
+    _msg_info "Setting up Yaboot for Power Macintosh booting..."
+    install -d -m 0755 -- "${isofs_dir}/boot/"
+    for file in yaboot yaboot.conf yaboot.chrp; do
+      install -m 755 -- "${profile}/yaboot/boot/${file}" "${isofs_dir}/boot/"
+    done
+    sed "s@archisolabel=ARCH_[[:digit:]]\{6\}@archisolabel=${iso_label}@g" -i ${isofs_dir}/boot/yaboot.conf
+
+    _msg_info "Done! Yaboot set up for Power Macintosh booting successfully."
 }
 
 # Copy kernel and initramfs to FAT image
@@ -1487,7 +1496,8 @@ _build_iso_image() {
             -output "${out_dir}/${image_name}" \
             "${isofs_dir}/"
     else
-      grub-mkrescue -o "${out_dir}/${image_name}" --compress=xz --volid ${iso_label} --verbose "${isofs_dir}/"
+      rm -v ${isofs_dir}/arch/boot/*/initramfs-*fallback*
+      grub-mkrescue -o "${out_dir}/${image_name}" --compress=xz --volid ${iso_label} "${isofs_dir}/"
     fi
     _msg_info "Done!"
     du -h -- "${out_dir}/${image_name}"
