@@ -21,6 +21,8 @@ gnu-netcat
 grml-zsh-config
 haveged
 hdparm
+hfsutils
+hfsprogs
 irssi
 iwd
 kitty-terminfo
@@ -30,6 +32,7 @@ linux-atm
 lsscsi
 lvm2
 lynx
+mac-fdisk
 man-db
 man-pages
 mdadm
