@@ -1032,6 +1032,10 @@ _validate_requirements_bootmode_uefi-x64.grub.eltorito() {
     _validate_requirements_bootmode_uefi-x64.grub.esp
 }
 
+_validate_requirements_bootmode_openpower.grub() {
+    echo "dummy _validate_requirements_bootmode_openpower.grub"
+}
+
 # Build airootfs filesystem image
 _prepare_airootfs_image() {
     _run_once "_mkairootfs_${airootfs_image_type}"
