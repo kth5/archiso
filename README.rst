@@ -3,7 +3,7 @@ archiso
 =======
 
 The archiso project features scripts and configuration templates to build installation media (*.iso* images and
-*.tar.gz* bootstrap images) as well as netboot artifacts for BIOS and UEFI based systems on the x86_64 architecture.
+*.tar bootstrap images) as well as netboot artifacts for BIOS and UEFI based systems on the x86_64 architecture.
 Currently creating the images is only supported on Arch Linux but may work on other operating systems as well.
 
 Requirements
@@ -35,6 +35,10 @@ For running the images in a virtualized test environment the following packages 
 For linting the shell scripts the following package is required:
 
 * shellcheck
+
+For generating the man pages:
+
+* python-docutils
 
 Profiles
 ========
@@ -129,7 +133,7 @@ boot the iso image from GRUB with a version specific cow directory to mitigate o
 .. code:: sh
 
    loopback loop archlinux.iso
-   load_env -f (loop)/arch/grubenv
+   load_env -f (loop)/boot/grub/grubenv
    linux (loop)/arch/boot/x86_64/vmlinuz-linux ... \
        cow_directory=${NAME}/${VERSION} ...
    initrd (loop)/arch/boot/x86_64/initramfs-linux-lts.img
@@ -139,14 +143,14 @@ Contribute
 
 Development of archiso takes place on Arch Linux' Gitlab: https://gitlab.archlinux.org/archlinux/archiso.
 
-Please read our distribution-wide `Code of Conduct <https://wiki.archlinux.org/title/Code_of_conduct>`_ before
+Please read our distribution-wide `Code of Conduct <https://terms.archlinux.org/docs/code-of-conduct/>`_ before
 contributing, to understand what actions will and will not be tolerated.
 
 Read our `contributing guide <CONTRIBUTING.rst>`_ to learn more about how to provide fixes or improvements for the code
 base.
 
 Discussion around archiso takes place on the `arch-releng mailing list
-<https://lists.archlinux.org/listinfo/arch-releng>`_ and in `#archlinux-releng
+<https://lists.archlinux.org/mailman3/lists/arch-releng.lists.archlinux.org/>`_ and in `#archlinux-releng
 <ircs://irc.libera.chat/archlinux-releng>`_ on `Libera Chat <https://libera.chat/>`_.
 
 All past and present authors of archiso are listed in `AUTHORS <AUTHORS.rst>`_.
