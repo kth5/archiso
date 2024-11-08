@@ -26,14 +26,13 @@ gpm
 grml-zsh-config
 haveged
 hdparm
+iprutils
 irssi
 iwd
 kitty-terminfo
 lftp
 linux
-linux-4k
 linux-atm
-linux-firmware
 lsscsi
 lvm2
 lynx
