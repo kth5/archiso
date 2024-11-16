@@ -3,8 +3,8 @@
 
 iso_name="archpower"
 iso_label="ARCH_$(date +%Y%m)"
-iso_publisher="Arch POWER <https://archlinuxpower.org>"
-iso_application="Arch POWER Live/Rescue CD"
+iso_publisher="ArchPOWER <https://archlinuxpower.org>"
+iso_application="ArchPOWER Live/Rescue CD"
 iso_version="$(date +%Y.%m.%d)"
 install_dir="arch"
 buildmodes=('iso')
@@ -17,7 +17,6 @@ file_permissions=(
   ["/etc/shadow"]="0:0:400"
   ["/root"]="0:0:750"
   ["/root/.automated_script.sh"]="0:0:755"
-  ["/usr/local/bin/choose-mirror"]="0:0:755"
   ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
 )
