@@ -86,7 +86,7 @@ mdadm
 mkinitcpio
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
-#modemmanager
+modemmanager
 mtools
 nano
 nbd
