@@ -10,7 +10,6 @@ base
 #     They are enabled during development and commented out for release isos.
 archpower-keyring
 brotli
-crda
 haveged
 hfsprogs
 linux-ppc64

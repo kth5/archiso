@@ -9,7 +9,6 @@ base
 # XXX testing-only packages must be identified.
 #     They are enabled during development and commented out for release isos.
 archpower-keyring
-crda
 haveged
 iprutils # testing-only
 linux
