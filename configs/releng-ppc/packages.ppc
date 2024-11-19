@@ -9,7 +9,6 @@ base
 # XXX testing-only packages must be identified.
 #     They are enabled during development and commented out for release isos.
 archpower-keyring
-bind-tools
 brotli
 crda
 haveged
@@ -24,7 +23,7 @@ arch-install-scripts
 #archinstall
 #b43-fwcutter
 #base
-#bind
+bind
 brltty
 #broadcom-wl
 btrfs-progs
