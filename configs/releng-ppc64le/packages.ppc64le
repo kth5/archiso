@@ -6,11 +6,12 @@ base
 
 ## ArchPOWER
 # Packages that do not come from `releng` and the kernel package.
-# XXX testing-only packages must be identified.
-#     They are enabled during development and commented out for release isos.
+#
+# testing-only packages: none at the moment
+# These packages are enabled during development and commented out for release isos.
 archpower-keyring
 haveged
-iprutils # testing-only
+iprutils
 linux
 
 ## Arch Linux
