@@ -13,6 +13,7 @@ archpower-keyring
 haveged
 iprutils
 linux
+linux-4k
 
 ## Arch Linux
 # Packages that come from `releng`, leave them either enabled or commented.
