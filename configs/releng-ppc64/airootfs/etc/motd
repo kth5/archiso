@@ -1,4 +1,8 @@
-To install [38;2;23;147;209mArchPOWER[0m follow the installation guide:
+To install [38;2;23;147;209mArchPOWER[0m follow the guides:
+https://github.com/kth5/archpower/wiki
+
+For anything architecture independent, the upstream Archlinux
+Installation Guide is bliss:
 https://wiki.archlinux.org/title/Installation_guide
 
 For Wi-Fi, authenticate to the wireless network using the [35miwctl[0m utility.
