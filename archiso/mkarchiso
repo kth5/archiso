@@ -1049,7 +1049,7 @@ _validate_requirements_bootmode_openpower.grub() {
 }
 
 _validate_requirements_bootmode_ps3.kboot() {
-    echo "dummy _validate_requirements_bootmode_openpower.grub"
+    echo "dummy _validate_requirements_bootmode_ps3.kboot"
 }
 
 # Build airootfs filesystem image
