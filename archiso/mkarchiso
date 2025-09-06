@@ -505,6 +505,18 @@ _make_bootmode_openpower.grub() {
     _msg_info "Done! Grub set up for OpenPOWER booting successfully."
 }
 
+_make_bootmode_ps3.kboot() {
+    _msg_info "Setting kboot for PlayStation 3 booting..."
+    install -d -m 0755 -- "${isofs_dir}/etc/"
+    install -m 0644 -- "${profile}/kboot/kboot.conf" "${isofs_dir}/etc/"
+    sed "s@archisolabel=ARCH_[[:digit:]]\{6\}@archisolabel=${iso_label}@g" -i ${isofs_dir}/etc/kboot.conf
+
+    # we need our kernels on the ISO as well
+    _make_boot_on_iso9660
+
+    _msg_info "Done! kboot set up for PlayStation 3 booting successfully."
+}
+
 _make_bootmode_pmac.yaboot() {
     _msg_info "Setting up Yaboot for Power Macintosh booting..."
     install -d -m 0755 -- "${isofs_dir}/boot/"
@@ -1034,6 +1046,10 @@ _validate_requirements_bootmode_uefi-x64.grub.eltorito() {
 
 _validate_requirements_bootmode_openpower.grub() {
     echo "dummy _validate_requirements_bootmode_openpower.grub"
+}
+
+_validate_requirements_bootmode_ps3.kboot() {
+    echo "dummy _validate_requirements_bootmode_ps3.kboot"
 }
 
 # Build airootfs filesystem image
