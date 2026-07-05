@@ -1,3 +1,26 @@
+## REQUIRED
+# During install it is assumed all dependencies of the `base` meta-package are already installed.
+# The order in this file reflects the install order of each package (includes dependencies).
+# This package must come first to avoid errors when other packages are installed.
+base
+
+## ArchPOWER
+# Packages that do not come from `releng` and the kernel package.
+#
+# testing-only packages: none at the moment
+# These packages are enabled during development and commented out for release isos.
+archpower-keyring
+brotli
+haveged
+hfsprogs
+linux-ppc64
+linux-ps3
+linux-xenon
+links
+
+## Arch Linux
+# Packages that come from `releng`, leave them either enabled or commented.
+# It facilitates diffs with an updated `releng` or other `releng-ppc*` configs.
 alsa-utils
 arch-install-scripts
 archpower-keyring
