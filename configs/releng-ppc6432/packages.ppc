@@ -67,6 +67,7 @@ libfido2
 libusb-compat
 linux-ppc64
 linux-ps3
+linux-xenon
 linux-atm
 linux-firmware-amdgpu
 linux-firmware-radeon
