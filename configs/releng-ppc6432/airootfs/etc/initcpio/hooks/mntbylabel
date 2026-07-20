@@ -1,0 +1,8 @@
+run_hook() {
+    mkdir -p /dev/disk/by-label
+    local label dev
+    for dev in /dev/sr0 /dev/sd*; do
+        label=$(blkid "$dev" -s LABEL -o value 2>/dev/null)
+        [ -n "$label" ] && ln -sf "../../${dev##*/}" "/dev/disk/by-label/$label"
+    done
+}
